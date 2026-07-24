@@ -3,6 +3,7 @@ import axios from "axios";
 
 import Navbar from "../components/Navbar";
 import TaskList from "../components/TaskList";
+import AddTaskForm from "../components/AddTaskForm";
 
 function Dashboard() {
   const [tasks, setTasks] = useState([]);
@@ -26,6 +27,20 @@ function Dashboard() {
         <h2 className="text-3xl font-bold">
           Welcome back!
         </h2>
+
+        <main className="max-w-6xl mx-auto p-6">
+            <h2 className="text-3xl font-bold">
+                Welcome back!
+            </h2>
+
+            <p className="text-gray-600 mt-2">
+                You have {tasks.length} tasks today.
+            </p>
+
+            <AddTaskForm />
+
+            <TaskList tasks={tasks} />
+        </main>
 
         <p className="text-gray-600 mt-2">
           You have {tasks.length} task{tasks.length !== 1 ? "s" : ""} today.
