@@ -1,6 +1,23 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 import Navbar from "../components/Navbar";
+import TaskList from "../components/TaskList";
 
 function Dashboard() {
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/tasks")
+      .then((response) => {
+        setTasks(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -11,7 +28,7 @@ function Dashboard() {
         </h2>
 
         <p className="text-gray-600 mt-2">
-          You have 3 tasks today.
+          You have {tasks.length} task{tasks.length !== 1 ? "s" : ""} today.
         </p>
       </main>
     </>
