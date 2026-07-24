@@ -13,18 +13,26 @@ app.get("/", (req, res) => {
 });
 
 app.get("/api/tasks", (req, res) => {
-    res.json([
-        {
-            id: 1,
-            title: "Learn Express",
-            completed: false
-        },
-        {
-            id: 2,
-            title: "Build Taskify",
-            completed: false
-        }
-    ]);
+  res.json([
+    {
+      id: 1,
+      title: "Learn MERN",
+      completed: false,
+      priority: "High",
+    },
+    {
+      id: 2,
+      title: "Build Taskify",
+      completed: true,
+      priority: "Medium",
+    },
+    {
+      id: 3,
+      title: "Learn MongoDB",
+      completed: false,
+      priority: "Low",
+    },
+  ]);
 });
 
 app.listen(PORT, () => {

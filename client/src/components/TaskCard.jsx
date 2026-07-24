@@ -5,6 +5,8 @@ function TaskCard({ task }) {
       <p>
         {task.completed ? "✅ Completed" : "⏳ Pending"}
       </p>
+
+      <p>Priority: {task.priority}</p>
     </div>
   );
 }
