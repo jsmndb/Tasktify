@@ -1,4 +1,7 @@
+import { useState } from "react";
+
 function AddTaskForm() {
+  const [title, setTitle] = useState("");
   return (
     <div className="bg-white rounded-lg shadow-md p-4 mb-6">
       <h2 className="text-xl font-semibold mb-4">
@@ -9,9 +12,14 @@ function AddTaskForm() {
         <input
           type="text"
           placeholder="Enter task title..."
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
           className="border rounded-lg p-2 w-full"
         />
-      </form>
+        <p className="mt-2 text-gray-500">
+          Current input: {title}
+        </p>
+              </form>
     </div>
   );
 }
