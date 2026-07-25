@@ -23,29 +23,19 @@ function Dashboard() {
     <>
       <Navbar />
 
-      <main className="max-w-6xl mx-auto p-6">
-        <h2 className="text-3xl font-bold">
-          Welcome back!
-        </h2>
-
         <main className="max-w-6xl mx-auto p-6">
             <h2 className="text-3xl font-bold">
                 Welcome back!
             </h2>
 
             <p className="text-gray-600 mt-2">
-                You have {tasks.length} tasks today.
+                You have {tasks.length} task{tasks.length !== 1 ? "s" : ""} today.
             </p>
 
             <AddTaskForm />
 
             <TaskList tasks={tasks} />
         </main>
-
-        <p className="text-gray-600 mt-2">
-          You have {tasks.length} task{tasks.length !== 1 ? "s" : ""} today.
-        </p>
-      </main>
     </>
   );
 }
