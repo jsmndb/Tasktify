@@ -1,11 +1,16 @@
 import { useState } from "react";
 
-function AddTaskForm() {
+function AddTaskForm({ addTask }) {
   const [title, setTitle] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
+
+    if (!title.trim()) return;
+
+    addTask(title);
+
+    setTitle("");
   };
 
   return (
@@ -25,6 +30,13 @@ function AddTaskForm() {
         <p className="mt-2 text-gray-500">
           Current input: {title}
         </p>
+
+        <button
+          type="submit"
+          className="bg-blue-600 text-white px-4 py-2 rounded-lg mt-3 hover:bg-blue-700"
+        >
+          Add Task
+        </button>
         </form>
     </div>
   );

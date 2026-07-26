@@ -19,6 +19,17 @@ function Dashboard() {
       });
   }, []);
 
+  const addTask = (title) => {
+    const newTask = {
+      id: Date.now(),
+      title,
+      completed: false,
+      priority: "Medium",
+    };
+
+    setTasks([...tasks, newTask]);
+  };
+
   return (
     <>
       <Navbar />
@@ -32,7 +43,7 @@ function Dashboard() {
                 You have {tasks.length} task{tasks.length !== 1 ? "s" : ""} today.
             </p>
 
-            <AddTaskForm />
+            <AddTaskForm onAddTask={addTask} />
 
             <TaskList tasks={tasks} />
         </main>
