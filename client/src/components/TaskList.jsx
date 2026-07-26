@@ -2,7 +2,7 @@ import TaskCard from "./TaskCard";
 
 function TaskList({ tasks }) {
   return (
-    <div>
+    <div className="mt-6">
       {tasks.map((task) => (
         <TaskCard key={task.id} task={task} />
       ))}
