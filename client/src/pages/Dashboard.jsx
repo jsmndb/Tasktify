@@ -19,15 +19,8 @@ function Dashboard() {
       });
   }, []);
 
-  const addTask = (title) => {
-    const newTask = {
-      id: Date.now(),
-      title,
-      completed: false,
-      priority: "Medium",
-    };
-
-    setTasks([...tasks, newTask]);
+  const addTask = (newTask) => {
+    setTasks((prevTasks) => [...prevTasks, newTask]);
   };
 
   return (

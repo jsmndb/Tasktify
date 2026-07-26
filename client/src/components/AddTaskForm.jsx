@@ -1,16 +1,28 @@
 import { useState } from "react";
+import axios from "axios";
 
 function AddTaskForm({ addTask }) {
   const [title, setTitle] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!title.trim()) return;
 
-    addTask(title);
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/tasks",
+        {
+          title: title,
+        }
+      );
 
-    setTitle("");
+      addTask(response.data);
+
+      setTitle("");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
