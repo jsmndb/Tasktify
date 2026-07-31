@@ -23,6 +23,18 @@ function Dashboard() {
     setTasks((prevTasks) => [...prevTasks, newTask]);
   };
 
+  const deleteTask = async (id) => {
+  try {
+    await axios.delete(`http://localhost:5000/api/tasks/${id}`);
+
+    setTasks((prevTasks) =>
+      prevTasks.filter((task) => task.id !== id)
+    );
+  } catch (error) {
+    console.error(error);
+  }
+};
+
   return (
     <>
       <Navbar />
@@ -38,7 +50,10 @@ function Dashboard() {
 
             <AddTaskForm onAddTask={addTask} />
 
-            <TaskList tasks={tasks} />
+            <TaskList
+              tasks={tasks}
+              deleteTask={deleteTask}
+            />
         </main>
     </>
   );

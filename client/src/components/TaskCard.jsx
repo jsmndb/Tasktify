@@ -1,4 +1,4 @@
-function TaskCard({ task }) {
+function TaskCard({ task, deleteTask }) {
   return (
     <div className="bg-white rounded-lg shadow-md p-5 mb-4 border border-gray-200">
       <div className="flex justify-between items-center">
@@ -30,7 +30,10 @@ function TaskCard({ task }) {
           Edit
         </button>
 
-        <button className="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded">
+        <button
+          onClick={() => deleteTask(task.id)}
+          className="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded"
+        >
           Delete
         </button>
       </div>
