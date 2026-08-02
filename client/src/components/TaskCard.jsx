@@ -1,4 +1,4 @@
-function TaskCard({ task, deleteTask }) {
+function TaskCard({ task, deleteTask, toggleComplete }) {
   return (
     <div className="bg-white rounded-lg shadow-md p-5 mb-4 border border-gray-200">
       <div className="flex justify-between items-center">
@@ -22,8 +22,15 @@ function TaskCard({ task, deleteTask }) {
       </p>
 
       <div className="flex gap-2 mt-4">
-        <button className="bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded">
-          Complete
+        <button
+          onClick={() => toggleComplete(task.id)}
+          className={`text-white px-3 py-2 rounded ${
+            task.completed
+              ? "bg-yellow-500 hover:bg-yellow-600"
+              : "bg-green-500 hover:bg-green-600"
+          }`}
+        >
+          {task.completed ? "Undo" : "Complete"}
         </button>
 
         <button className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded">

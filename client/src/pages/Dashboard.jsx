@@ -35,6 +35,22 @@ function Dashboard() {
   }
 };
 
+const toggleComplete = async (id) => {
+  try {
+    const response = await axios.patch(
+      `http://localhost:5000/api/tasks/${id}`
+    );
+
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === id ? response.data : task
+      )
+    );
+  } catch (error) {
+    console.error(error);
+  }
+};
+
   return (
     <>
       <Navbar />
@@ -53,6 +69,7 @@ function Dashboard() {
             <TaskList
               tasks={tasks}
               deleteTask={deleteTask}
+              toggleComplete={toggleComplete}
             />
         </main>
     </>
